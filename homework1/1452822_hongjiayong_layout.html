@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>1452822 洪嘉勇 web第一次作业 响应式网页</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/fit.css">
+  <link rel="stylesheet" href="assets/css/prism.css">
+</head>
+<body>
+<nav class="header-bar">
+  <p>洪嘉勇的个人网站</p>
+</nav>
+
+<aside class="side-bar">
+  <div class="user-head">
+    <img src="assets/img/beijing.jpg"/>
+    <p>洪嘉勇</p>
+    <p style="font-size: 16px;color: #BDBDBD">Hjyheart</p>
+    <p class="adv">如果觉得文章还不错，可以点击打赏</p>
+    <ul>
+      <li><i class="fa fa-home" aria-hidden="true"></i> <a href="#"> Home</a></li>
+      <li><i class="fa fa-github" aria-hidden="true"></i><a href="#"> GitHub</a></li>
+      <li><i class="fa fa-twitter" aria-hidden="true"></i> <a href="#">Twitter</a></li>
+      <li><i class="fa fa-facebook" aria-hidden="true"></i> <a href="#">Facebook</a></li>
+      <li><i class="fa fa-weibo" aria-hidden="true"></i> <a href="#">WeiBo</a></li>
+      <li><i class="fa fa-weixin" aria-hidden="true"></i> <a href="#">公众号</a></li>
+    </ul>
+  </div>
+</aside>
+
+<div class="main-container">
+  <article class="blog" style="overflow-y: scroll">
+    <h1 class="title"><strong>Flex 布局教程：语法篇</strong></h1>
+    <hr>
+    <p class="author">作者：阮一峰</p>
+    <p class="date">日期：2015年7月10日</p>
+    <h1 class="sub-title">一、Flex布局是什么</h1>
+    <hr>
+    <p>Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。</p>
+    <p>任何一个容器都可以指定为Flex布局。</p>
+    <blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">.box</span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-flex<span
+        class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </blockquote>
+    <p>行内元素也可以使用Flex布局。</p>
+    <blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">.box</span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-flex<span
+        class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </blockquote>
+    <p>Webkit内核的浏览器，必须加上<code>-webkit</code>前缀。</p>
+    <blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">.box</span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-flex<span
+        class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Safari */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span
+        class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </blockquote>
+    <p>注意，设为Flex布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效。</p>
+    <h1 class="sub-title">二、基本概念</h1>
+    <hr>
+    <p>采用Flex布局的元素，称为Flex容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称"项目"。</p>
+    <p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt="" title=""></p>
+    <p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main
+      end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
+    <p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
+    <h1 class="sub-title">三、容器的属性</h1>
+    <hr>
+    <p>以下6个属性设置在容器上。</p>
+    <blockquote>
+      <ul>
+        <li>flex-direction</li>
+        <li>flex-wrap</li>
+        <li>flex-flow</li>
+        <li>justify-content</li>
+        <li>align-items</li>
+        <li>align-content</li>
+      </ul>
+    </blockquote>
+    <h1 class="sub-sub-title">3.1 flex-direction属性</h1>
+    <p><code>flex-direction</code>属性决定主轴的方向（即项目的排列方向）。</p>
+    <blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">.box </span><span class="token punctuation">{</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> row | row-reverse | column | column-reverse<span
+        class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </blockquote>
+    <p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png" alt="" title=""></p>
+    <p>它可能有4个值。</p>
+    <blockquote>
+      <ul>
+        <li><code>row</code>（默认值）：主轴为水平方向，起点在左端。</li>
+        <li><code>row-reverse</code>：主轴为水平方向，起点在右端。</li>
+        <li><code>column</code>：主轴为垂直方向，起点在上沿。</li>
+        <li><code>column-reverse</code>：主轴为垂直方向，起点在下沿。</li>
+      </ul>
+    </blockquote>
+    <p>它可能取三个值。</p>
+    <p>（1）<code>nowrap</code>（默认）：不换行。</p>
+    <p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png" alt="" title=""></p>
+    <p>（2）<code>wrap</code>：换行，第一行在上方。</p>
+    <p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg" alt="" title=""></p>
+    <p>（3）<code>wrap-reverse</code>：换行，第一行在下方。</p>
+    <p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg" alt="" title=""></p>
+  </article>
+</div>
+
+<footer>
+  <p>©2017 1452822 洪嘉勇</p>
+</footer>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="assets/prism.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
